@@ -472,8 +472,13 @@ public static class ExtensionMethods // extension, which allows other scripts to
 {
 	public static gamePlayManager findGPM(this GameObject go)
 	{
-		gamePlayManager gpm = GameObject.FindGameObjectWithTag ("gpm").GetComponent<gamePlayManager>();
-		return gpm;
+		GameObject get = GameObject.FindGameObjectWithTag("gpm");
+		if (get)
+		{
+			gamePlayManager gpm = get.GetComponent<gamePlayManager>();
+			return gpm;
+		}
+		return null;
 	}
 }
 

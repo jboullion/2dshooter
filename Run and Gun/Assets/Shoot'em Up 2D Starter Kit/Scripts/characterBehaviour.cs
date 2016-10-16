@@ -46,11 +46,11 @@ public class characterBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		prepareFighter (); // determines variables
-		setLayerOrder (); // sets proper sorting order
+		setLayerOrder (); // sets proper sorting order test
 
-		healthLine = GameObject.Find ("Canvas").transform.FindChild ("gameUI").FindChild ("healthBar").FindChild ("line").gameObject.GetComponent<RectTransform> ();  // determine health bar
-		fullHealthLineLength = healthLine.sizeDelta.x; // full length
-		healthPointLength = fullHealthLineLength / health; // one health point length
+		//healthLine = GameObject.Find ("Canvas").transform.FindChild ("gameUI").FindChild ("healthBar").FindChild ("line").gameObject.GetComponent<RectTransform> ();  // determine health bar
+		//fullHealthLineLength = healthLine.sizeDelta.x; // full length
+		//healthPointLength = fullHealthLineLength / health; // one health point length 
 
 		size = gameObject.GetComponent<BoxCollider2D> ().size; // determines size
 		offset = gameObject.GetComponent<BoxCollider2D> ().offset; // determines offset
@@ -80,7 +80,7 @@ public class characterBehaviour : MonoBehaviour {
 
 	public void move (Vector2 direction) // movement function
 	{
-		animator.SetInteger ("state", 1); // sets movement animation
+		
 		rb.velocity = direction * speed; // applies velocity
 
 		if (!shooting) // if character is not shooting

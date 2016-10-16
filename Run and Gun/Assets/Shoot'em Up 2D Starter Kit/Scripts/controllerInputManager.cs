@@ -3,7 +3,7 @@ using System.Collections;
 
 public class controllerInputManager : MonoBehaviour {
 
-	[Tooltip("")] public characterBehaviour p;
+	[Tooltip("")] public characterBehaviour[] p;
 
 	gamePlayManager gpm;
 
@@ -30,7 +30,7 @@ public class controllerInputManager : MonoBehaviour {
 	void Update () {
 
 		//p is set when game begins
-		if (p)
+		if (p[0])
 		{
 			//Be careful to only get the axis values once per update.
 			float axis1 = Input.GetAxis("Axis 1");
@@ -43,20 +43,25 @@ public class controllerInputManager : MonoBehaviour {
 				DEBUG_TIMER = 0;
 			}
 
-			//Move exactly how the controller moves.
-			//This could probably be done more smoothly
-			if (p.animator)
+			//activate enemies
+			foreach (characterBehaviour character in p) //the line the error is pointing to
 			{
-				p.move(new Vector2(axis1, axis2).normalized);
+				
+				//Move exactly how the controller moves.
+				//This could probably be done more smoothly
+				if (character.animator)
+				{
+					character.move(new Vector2(axis1, axis2).normalized);
 
-				if (Input.GetKey(KeyCode.JoystickButton0) == true)
-				{
-					//A
-					p.attack();
-				}
-				else if (Input.GetKey(KeyCode.JoystickButton0) != true)
-				{
-					p.triggerUp();
+					if (Input.GetKey(KeyCode.JoystickButton0) == true)
+					{
+						//A
+						character.attack();
+					}
+					else if (Input.GetKey(KeyCode.JoystickButton0) != true)
+					{
+						character.triggerUp();
+					}
 				}
 			}
 			
@@ -66,7 +71,11 @@ public class controllerInputManager : MonoBehaviour {
 
 	public void setPlayer (GameObject newPlayer)
 	{
-		p = newPlayer.GetComponent<characterBehaviour> ();	
+		for (int i = 0; i < p.Length; i++)
+		{
+			p[i] = newPlayer.GetComponent<characterBehaviour>();
+		}
+
 	}
 
 }

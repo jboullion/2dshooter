@@ -98,7 +98,7 @@ public class zombieBehavior : MonoBehaviour {
 		dead = true;
 		throwPieces ();
 		gpm.enemyDied ();
-		gameObject.SetActive (false);
+		//this.gameObject.SetActive (false);
 	}
 
 	void throwPieces () // zombie falls to pieces

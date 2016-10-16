@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Controller Tester\Scripts\Editor\TestGamepadEditor.cs" />
+    <Compile Include="Assets\VSCode\Plugins\Editor\VSCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shoot&apos;em Up 2D Starter Kit\Fonts\VT323\OFL.txt" />
